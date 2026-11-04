@@ -19,7 +19,10 @@ python3 src/make_report.py     # 输出指标表 / 提升曲线 / 案例卡（�
 
 ## 变更日志（给组员：每轮改了什么，pull 后看这里）
 
-**2026-11-04（最新）· 分工落定**
+**2026-11-04（最新）· E 开工**
+- **E 第 1 天交付**（不依赖数据，commit `e7b3756`）：`docs/report-skeleton.md`（英文报告骨架 v0.1——九节配额合计 9.5 页 + 0.5 缓冲、每节成句英文 + `[TODO]` 槽位 + 主笔人）、`docs/slides-and-workflow.md`（12 页 PPT 大纲含秒数与演讲分工、Q&A 预案、两张工作流图草稿）。**各组员按骨架认领 `[TODO]` 槽位填数字，不许超自己配额。**
+
+**2026-11-04 · 分工落定**
 - 认领结果：**A 钟诗宇**（数据管线）· **B 陆德康**（数据+标签）· **C 刘奕萱**（建模）· **D 程洁**（评估+案例）· **E 李展健**（报告统稿）。各角色开工按「节奏与依赖」执行；A 的最小可用合并版第 1 天末交付。
 
 **2026-11-04 · 第二次更新**
@@ -116,9 +119,11 @@ python3 src/make_report.py     # 输出指标表 / 提升曲线 / 案例卡（�
 │   ├── build_panel.py                合并+清洗+特征/标签构造
 │   ├── run_models.py                 基线/逻辑回归/树模型 + 时间切分评估
 │   └── make_report.py                指标表/提升曲线/案例卡
-├── docs/                             ← 决策文档（🚧）
-│   ├── data-cleaning-decisions.md    缺失值/CEO 筛选/标签定义的选择与理由
-│   └── limitations.md                局限与诚实边界
+├── docs/                             ← 决策文档
+│   ├── report-skeleton.md            报告英文骨架 v0.1（E 主责，各组员填 [TODO] 槽位）
+│   ├── slides-and-workflow.md        PPT 大纲 + 演讲分工 + Q&A 预案 + 工作流图草稿
+│   ├── data-cleaning-decisions.md    缺失值/CEO 筛选/标签定义的选择与理由（🚧 A/B）
+│   └── limitations.md                局限与诚实边界（🚧 D）
 └── analysis-output/                  ← 生成产物（表格/图，git 可追踪）
 ```
 
