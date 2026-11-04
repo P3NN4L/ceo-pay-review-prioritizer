@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# data / archives (large files)
+Dataset-20261103.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# outputs
+*.png
+!docs/**/*.png
