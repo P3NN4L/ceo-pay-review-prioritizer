@@ -19,6 +19,10 @@ python3 src/make_report.py     # 输出指标表 / 提升曲线 / 案例卡（�
 
 ## 变更日志（给组员：每轮改了什么，pull 后看这里）
 
+**2026-11-09 · M1 完成（钟诗宇）**
+- 钟诗宇上传 `docs/A/` 四件套：`build_panel.py`（数据管线脚本）、`data-cleaning-decisions.md`（清洗决策大白话文档，**报告 §3 直接引用**）、`missingness.csv`（各指标缺失率）、`panel_M1.csv`（总表 M1 版：6,038 行，其中 **3,894 行**配上明年结果——2011: 1,968 / 2012: 1,926，14 个当年线索，标记率 20.0%）。
+- 里程碑表更新：M1 ✅。
+
 **2026-11-04（最新）· E 开工**
 - **E 第 1 天交付**（不依赖数据，commit `e7b3756`）：`docs/report-skeleton.md`（英文报告骨架 v0.1——九节配额合计 9.5 页 + 0.5 缓冲、每节成句英文 + `[TODO]` 槽位 + 主笔人）、`docs/slides-and-workflow.md`（12 页 PPT 大纲含秒数与演讲分工、Q&A 预案、两张工作流图草稿）。**各组员按骨架认领 `[TODO]` 槽位填数字，不许超自己配额。**
 
@@ -52,7 +56,7 @@ python3 src/make_report.py     # 输出指标表 / 提升曲线 / 案例卡（�
 
 | 阶段 | 事项 | 状态 |
 |---|---|---|
-| M1 | 数据合并与清洗：CEO 筛选（`ceoann`）→ GVKEY+YEAR 合并 → t/t+1 对齐 → 缺失值处理（题目要求：删除或均值填充，写明选择） | 🔴 |
+| M1 | 数据合并与清洗：CEO 筛选（`ceoann`）→ GVKEY+YEAR 合并 → t/t+1 对齐 → 缺失值处理（题目要求：删除或均值填充，写明选择） | ✅ 完成（2026-11-09，钟诗宇，见 `docs/A/`） |
 | M2 | 标签构造：t+1 年「ROA 大幅下滑」（主定义 + ≥2 个替代定义做稳健性检验） | 🔴 |
 | M3 | 建模：透明基线规则 / 逻辑回归 / 树模型；时间切分（train: 2011(+2012) → test: 2013） | 🔴 |
 | M4 | 评估：precision / recall / calibration / 对基线的 lift（precision@审查容量） | 🔴 |
@@ -120,6 +124,7 @@ python3 src/make_report.py     # 输出指标表 / 提升曲线 / 案例卡（�
 │   ├── run_models.py                 基线/逻辑回归/树模型 + 时间切分评估
 │   └── make_report.py                指标表/提升曲线/案例卡
 ├── docs/                             ← 决策文档
+│   ├── A/                            ← M1 交付（钟诗宇）：build_panel.py + 清洗决策 + panel_M1.csv + missingness.csv
 │   ├── report-skeleton.md            报告英文骨架 v0.1（E 主责，各组员填 [TODO] 槽位）
 │   ├── slides-and-workflow.md        PPT 大纲 + 演讲分工 + Q&A 预案 + 工作流图草稿
 │   ├── data-cleaning-decisions.md    缺失值/CEO 筛选/标签定义的选择与理由（🚧 A/B）
