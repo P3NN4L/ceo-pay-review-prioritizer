@@ -134,23 +134,12 @@ threshold = panel["roa_decline"].quantile(0.80)  # 80% 分位线
 panel["y_review"] = (panel["roa_decline"] >= threshold).astype(int)
 panel.loc[panel["roa_decline"].isna(), "y_review"] = np.nan  # 没有明年的行不标
 
-# ---------- 两个备用定义（M2：稳健性检验用） ----------
-# 目的：证明结论不是碰巧挑了个合适的口径，换把尺子量结论也一样。
-# 备用定义 1：门槛放宽到最差 25%
-th25 = panel["roa_decline"].quantile(0.75)
-panel["y_review_25"] = (panel["roa_decline"] >= th25).astype(int)
-panel.loc[panel["roa_decline"].isna(), "y_review_25"] = np.nan
-# 备用定义 2：ROA 下降超过 5 个百分点就算（固定尺子，不看排名）
-panel["y_review_5pp"] = (panel["roa_decline"] >= 5).astype(int)
-panel.loc[panel["roa_decline"].isna(), "y_review_5pp"] = np.nan
-
 # ============================================================
 # 第 7 步：存盘 + 打印摘要
 # ============================================================
 keep = (["gvkey", "year", "exec_fullname", "coname"]     # 公司与 CEO 身份
         + features                                        # 线索
-        + ["roa_next", "roa_decline", "y_review",          # 答案相关
-           "y_review_25", "y_review_5pp"])                  # 两个备用答案
+        + ["roa_next", "roa_decline", "y_review"])       # 答案相关
 panel[keep].to_csv(OUT_PANEL, index=False)
 
 labeled = panel[panel["y_review"].notna()]
@@ -158,7 +147,5 @@ print("总行数              :", len(panel))
 print("配上明年结果的行数  :", len(labeled), "（按年：",
       labeled["year"].value_counts().to_dict(), "）")
 print("被标记为需审查的比例:", round(panel["y_review"].mean(), 3))
-print("备用定义1（最差25%）标记比例:", round(panel["y_review_25"].mean(), 3))
-print("备用定义2（降超5点）标记比例:", round(panel["y_review_5pp"].mean(), 3))
 print("线索个数            :", len(features))
 print("已生成", OUT_PANEL, "和", OUT_MISS)
