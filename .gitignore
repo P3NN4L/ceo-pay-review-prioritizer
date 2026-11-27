@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# archives
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# outputs
+*.png
+!figures/*.png
+
+# raw input data is not published (see data/README.md)
+data/*
+!data/README.md

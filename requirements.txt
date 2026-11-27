@@ -1,0 +1,8 @@
+# 建模环境（实际版本以同目录 RUN_ENV.txt 为准）
+# 安装：pip install -r requirements.txt
+pandas==1.5.3
+scikit-learn==1.2.1
+numpy==1.23.5
+
+# 说明：不同 sklearn/pandas 版本会改变 CSV 浮点解析与随机森林建树细节，
+# 指标可能相差 1-2 个百分点（不影响结论方向）。为保证结果可复现，请对齐上表版本。
